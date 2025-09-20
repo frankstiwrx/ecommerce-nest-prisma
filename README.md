@@ -34,7 +34,19 @@ Mini projeto de e-commerce feito para estudo e portfólio, com backend em **Nest
 - Listagem de produtos com busca, ordenação e filtro de estoque  
 - Página de detalhes com imagem, descrição, quantidade e produtos relacionados  
 - Carrinho simples via localStorage com feedback visual  
-- Layout responsivo para desktop e mobile  
+- Layout responsivo para desktop e mobile
+
+  ## Ilustração
+
+### Página Principal
+![Principal](docs/principal.png)
+
+### Página de Produto
+![Produto](docs/produto.png)
+
+### Carrinho
+![Carrinho](docs/carrinho.png)
+
 
 ##  Próximos passos
 - Checkout fake validando estoque  
