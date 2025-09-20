@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carrinho</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    :root { --panel:#151922; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:#e6e6e6; background:#0b0d10; }
+    .cart { max-width: 980px; margin: 32px auto; padding: 0 16px; }
+    .cart h1 { margin-bottom: 16px; }
+    .dev { background:#202534; padding:10px 12px; border-radius:10px; margin-bottom:12px; font-size:.95rem; }
+    .cart-grid { display: grid; gap: 12px; }
+    .cart-row { display:flex; align-items:center; gap:12px; padding:12px; background: var(--panel); border-radius: 12px; }
+    .cart-row img { width:64px; height:64px; object-fit:cover; border-radius: 8px; background:#333; }
+    .grow { flex:1; }
+    .price { font-weight:600; }
+    .qty { display:flex; align-items:center; gap:8px; }
+    .total { margin-top:16px; font-size: 1.15rem; font-weight:700; text-align:right; }
+    .actions { margin-top: 20px; display:flex; gap:12px; justify-content:flex-end; }
+    button { padding:8px 12px; border-radius:10px; border:none; cursor:pointer; background:#2e7d32; color:#fff; }
+    button.danger { background:#b71c1c; }
+    input[type=number]{ background:#0f1118; border:1px solid #2b2f3c; color:#e6e6e6; border-radius:8px; padding:6px 8px; }
+    a.btn { display:inline-block; padding:8px 12px; border-radius:10px; background:#3949ab; color:#fff; text-decoration:none; }
+  </style>
+</head>
+<body>
+  <main class="cart">
+    <h1>Seu carrinho</h1>
+
+    <!-- Bloquinho DEV para você testar sem catálogo -->
+    <div class="dev">
+      <b>Teste rápido:</b>
+      <button id="addTest">Adicionar item #1</button>
+      <a class="btn" href="/">Voltar à home</a>
+    </div>
+
+    <div id="cartGrid" class="cart-grid"></div>
+    <div id="cartTotal" class="total">Total: R$ 0,00</div>
+    <div class="actions">
+      <button id="btnClear" class="danger">Esvaziar</button>
+      <button id="btnCheckout">Finalizar compra</button>
+    </div>
+  </main>
+
+  <script src="/cart.js"></script>
+</body>
+</html>

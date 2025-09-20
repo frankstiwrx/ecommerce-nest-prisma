@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ecommerce • Camisas 23/24</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+  <header class="container">
+    <h1>Loja de Camisas 23/24</h1>
+    <div class="toolbar"> <input id="search" type="search" placeholder="Buscar por nome ou clube..." /> <select
+        id="sort">
+        <option value="name">Ordenar: Nome</option>
+        <option value="price">Ordenar: Preço</option>
+        <option value="stock">Ordenar: Estoque</option>
+      </select> <!-- Checkbox "Em estoque" --> <label for="inStockOnly"> <input id="inStockOnly" type="checkbox" /> Em
+        estoque </label> <!-- Carrinho --> <button id="openCart" class="cart-btn"> 🛒 <span id="cartCount">0</span>
+      </button> </div>
+  </header>
+  <main class="container">
+    <section id="grid" class="grid"></section>
+  </main> <template id="card-tpl">
+    <article class="card">
+      <div class="thumb"> <span class="tag"></span> <img class="thumb-img" alt="" /> </div>
+      <div class="card-body">
+        <h3 class="card-title"></h3>
+        <p class="price"></p>
+        <div class="meta"> <span class="badge stock"></span> <a class="link" target="_self">Ver produto</a> </div>
+        <button class="btn btn-primary add">Adicionar ao carrinho</button>
+      </div>
+    </article>
+  </template> <!-- Drawer do carrinho -->
+  <div id="cartDrawer" class="drawer hidden">
+    <div class="drawer-panel"> <button id="closeCart" class="close">×</button>
+      <h3 style="margin:0 0 .5rem 0;">Seu carrinho</h3>
+      <div id="cartItems" class="items"></div>
+      <div class="drawer-footer">
+        <div>Subtotal: <strong id="cartSubtotal">R$ 0,00</strong></div> <button id="goCheckout"
+          class="btn btn-primary">Finalizar</button>
+      </div>
+    </div>
+  </div>
+  <footer class="container foot"> <small>Nest + Prisma</small> </footer>
+  <script src="/script.js" defer></script>
+</body>
+
+</html>

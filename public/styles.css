@@ -1,0 +1,368 @@
+:root {
+  --bg:#0b0d10;
+  --panel:#151922;
+  --muted:#8a93a5;
+  --text:#e9eef7;
+  --brand:#6ea8fe;
+  --ok:#22c55e;
+  /* FIX: cores auxiliares */
+  --warn:#eab308;
+  --danger:#ef4444;
+  --outline:#222736;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin:0;
+  padding:0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:linear-gradient(180deg,#0b0d10,#0f1320 60%, #0b0d10);
+}
+
+.container {
+  width:min(1100px, 92%);
+  margin-inline:auto;
+}
+
+/* Header */
+header {
+  padding:28px 0 6px;
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+h1 {
+  margin:0;
+  font-size:clamp(22px, 3vw, 34px);
+  letter-spacing:.3px;
+}
+.toolbar {
+  display:flex;
+  gap:10px;
+}
+input[type="search"], select {
+  background:var(--panel);
+  border:1px solid var(--outline);
+  color:var(--text);
+  padding:10px 12px;
+  border-radius:12px;
+  outline:none;
+  min-width:240px;
+}
+select { min-width:180px; }
+
+/* Grid de produtos */
+.grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
+  gap:18px;
+  padding:20px 0 40px;
+}
+.card {
+  background:rgba(21,25,34,.85);
+  border:1px solid #1e2433;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+  display:flex;
+  flex-direction:column;
+}
+
+/* Área da imagem */
+.thumb {
+  position:relative;
+  height:220px;              /* altura fixa */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: radial-gradient(70% 70% at 50% 30%, #1e2331, #111625);
+  overflow:hidden;
+}
+.thumb-img {
+  width:100%;
+  height:100%;
+  object-fit:contain;        /* mostra a camisa inteira */
+  display:block;
+  background:#0b0d10;
+  padding:6px;
+}
+/* Se quiser versão "cortar e preencher" use: object-fit: cover; */
+
+/* Tag do time */
+.tag {
+  position:absolute;
+  left:10px;
+  top:10px;
+  background:#0f172a;
+  color:#cbd5e1;
+  border:1px solid #1f2a44;
+  padding:4px 8px;
+  border-radius:999px;
+  font-size:12px;
+}
+
+/* Placeholder quando não tiver imagem */
+.thumb.placeholder {
+  background: repeating-linear-gradient(45deg, #151a26 0 10px, #101521 10px 20px);
+  border-bottom:1px solid #1e2433;
+}
+.thumb.placeholder::after {
+  content:"Sem imagem";
+  position:absolute;
+  inset:auto 0 10px 0;
+  margin:auto;
+  width:max-content;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:12px;
+  color:#b6c0d4;
+  background:#0f1627;
+  border:1px dashed #26304a;
+}
+
+/* Conteúdo do card */
+.card-body {
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.card-title {
+  margin:0;
+  font-size:16px;
+  line-height:1.3;
+}
+.price {
+  font-weight:700;
+  font-size:18px;
+}
+.meta {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+.badge {
+  background:#1b2333;
+  border:1px solid #26304a;
+  color:var(--muted);
+  padding:4px 8px;
+  border-radius:999px;
+  font-size:12px;
+}
+.badge.ok {
+  color:#d1fade;
+  border-color:#224a32;
+  background:#12261a;
+}
+/* FIX: badge de estoque baixo/zerado */
+.badge.warn {
+  color:#fff7d6;
+  border-color:#5a4a14;
+  background:#2a240f;
+}
+.badge.out {
+  color:#ffd7d7;
+  border-color:#4a1f22;
+  background:#261114;
+}
+
+.link {
+  color:var(--brand);
+  text-decoration:none;
+  font-size:13px;
+}
+
+.btn {
+  cursor:pointer;
+  border:none;
+  padding:10px 12px;
+  border-radius:10px;
+}
+.btn-primary {
+  background:linear-gradient(180deg,#6ea8fe,#3b77f0);
+  color:#06122b;
+  font-weight:700;
+}
+.btn-primary:hover {
+  filter:brightness(1.05);
+}
+/* FIX: estados desabilitados (inclusive “Sem estoque”) */
+.btn[disabled],
+button[disabled] {
+  opacity:.55;
+  cursor:not-allowed;
+  filter:saturate(.5);
+}
+
+/* Footer */
+.foot {
+  padding:24px 0 50px;
+  color:var(--muted);
+  text-align:center;
+}
+
+/* ========================================================= */
+/*  Quick wins adicionados                                   */
+/* ========================================================= */
+
+/* Hover suave nos cards */
+.card {
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0,0,0,.35);
+  border-color: #26304a;
+}
+
+/* Título em 2 linhas (clamp) */
+.card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Skeleton loader */
+.skel{
+  background: linear-gradient(90deg,#1b1f2b 25%,#22283a 37%,#1b1f2b 63%);
+  background-size: 400% 100%;
+  animation: sk 1.2s ease infinite;
+  border-radius: 12px;
+}
+@keyframes sk {
+  0%   { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
+/* Toast (feedback de ação) */
+.toast{
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: .6rem .9rem;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  z-index: 9999;
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+  font-size: 14px;
+}
+
+/* Foco visível em botões/links (acessibilidade) */
+button:focus-visible, .btn:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible {
+  outline: 2px solid #6ea8fe;
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+/* Ajuste fino da toolbar quando entrar o checkbox "Em estoque" */
+.toolbar label {
+  color: var(--muted);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+.toolbar input[type="checkbox"] {
+  accent-color: #6ea8fe;
+}
+
+/* Botão do carrinho (badge) */
+.cart-btn{
+  background:#1f2937; border:1px solid #374151; padding:.4rem .6rem;
+  border-radius:10px; color:var(--text); cursor:pointer;
+}
+.cart-btn #cartCount{
+  background:#0ea5e9; color:#052436; padding:.05rem .4rem; border-radius:999px; margin-left:.25rem;
+  font-weight:700;
+  /* FIX: pequena transição para mudanças de quantidade */
+  transition: transform .12s ease;
+}
+.cart-btn:active #cartCount{
+  transform: scale(1.05);
+}
+
+/* Drawer */
+.drawer{ position:fixed; inset:0; background:rgba(0,0,0,.45); display:flex; justify-content:flex-end; z-index:9998; }
+.drawer.hidden{ display:none; }
+.drawer-panel{
+  width:min(420px, 92vw); height:100%; background:#0b0f15; border-left:1px solid #1f2937;
+  padding:1rem; display:flex; flex-direction:column; gap:.75rem;
+}
+.drawer-panel .items{ overflow:auto; flex:1; display:grid; gap:.6rem; padding-right:.25rem; }
+.drawer-footer{ display:flex; align-items:center; justify-content:space-between; gap:.75rem; }
+.close{ margin-left:auto; background:#1f2937; border:1px solid #374151; color:#e2e8f0; border-radius:8px; padding:.25rem .5rem; cursor:pointer; }
+
+/* Linha do item no carrinho */
+.cart-line{
+  display:grid; grid-template-columns:64px 1fr auto; gap:.6rem; align-items:center;
+  background:#0e1420; border:1px solid #1f2435; border-radius:12px; padding:.5rem;
+}
+.cart-line img{ width:64px; height:64px; object-fit:contain; background:#0b0b0b; border:1px solid #222; border-radius:8px; }
+.cart-line .name{ font-weight:600; }
+.cart-line .price{ opacity:.85; }
+.cart-line .qty-controls{ display:flex; gap:.4rem; align-items:center; margin-top:.25rem; }
+.cart-line .qty-controls button{
+  background:#1f2937; border:1px solid #374151; color:#e2e8f0; padding:.15rem .5rem; border-radius:8px; cursor:pointer;
+}
+.cart-line .rm{ margin-left:.5rem; background:#2a1111; border-color:#512525; }
+/* FIX: indicador de limite no carrinho */
+.cart-line .limit {
+  font-size: 12px;
+  color: #cbd5e1;
+  opacity:.75;
+}
+
+/* Página de produto */
+.product{ display:grid; grid-template-columns: 1fr 1fr; gap:24px; align-items:start; padding:10px 0 30px; }
+.product .p-hero{ height:420px; }
+.product .p-hero img{ width:100%; height:100%; object-fit:contain; background:#0b0d10; padding:6px; }
+@media (max-width: 860px){
+  .product{ grid-template-columns: 1fr; }
+  .product .p-hero{ height:360px; }
+}
+
+/* ========================================================= */
+/* FIX: Estados de estoque/quantidade no produto e cards     */
+/* ========================================================= */
+
+/* botão adicionar “sem estoque” (apenas reforço visual; JS já desabilita) */
+.card .btn[disabled],
+#addBtn[disabled]{
+  background:linear-gradient(180deg, #6b7280, #4b5563);
+  color:#10141f;
+}
+
+/* badge de estoque no card: use .badge.out quando stock=0, .badge.warn quando baixo */
+.badge.stock.out::before { content:"Sem estoque"; }
+.badge.stock.warn::before { content:"Estoque baixo"; }
+
+/* input de quantidade travado quando estoque 0 */
+#qty[disabled],
+#qty[readonly]{
+  background:#141824;
+  border:1px solid #20263a;
+  color:#7b8498;
+}
+
+/* botões +/- desabilitados quando estoque 0 */
+#qtyDec[disabled], #qtyInc[disabled]{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+/* utilitária para conteúdo apenas visualmente oculto (a11y) */
+.sr-only{
+  position:absolute!important; width:1px!important; height:1px!important;
+  padding:0!important; margin:-1px!important; overflow:hidden!important;
+  clip:rect(0,0,0,0)!important; white-space:nowrap!important; border:0!important;
+}
